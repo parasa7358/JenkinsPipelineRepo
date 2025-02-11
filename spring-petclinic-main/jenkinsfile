@@ -1,0 +1,21 @@
+node{
+
+stage('SCM'){
+
+git branch: 'feature/2025.02.11', url: 'https://github.com/parasa7358/JenkinsPipelineRepo.git'
+
+}
+
+stage ('build the project'){
+sh 'mvn package'
+}
+
+stage ('Test'){
+sh 'mvn test'
+
+}
+
+stage ('archival'){
+archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+}
+}
